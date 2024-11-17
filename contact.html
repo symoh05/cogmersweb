@@ -34,21 +34,22 @@
     <section class="contact">
         <h1>Contact Cogmers Church of God Seventh Day</h1>
         <p>If you have any questions, prayer requests, or would like more information about our services, please reach out to us. We would love to hear from you!</p>
-
-        <form action="submit_contact_form.php" method="POST">
+        <form action="send_email.php" method="post">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
-
+        
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" required>
-
+        
             <label for="message">Your Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
+            <textarea id="message" name="message" rows="5" required></textarea>
+        
             <button type="submit">Send Message</button>
         </form>
+        <div id="form-message" style="display: none;"></div>
 
         <h2>Church Address</h2>
+        
         <p>123 Church St, City, State, ZIP Code</p>
 
         <h2>Phone Number</h2>
