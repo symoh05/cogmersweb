@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +32,11 @@
         </nav>
     </header>
     
-    <section class="contact">
+    <div class="container">
         <h1>Contact Cogmers Church of God Seventh Day</h1>
         <p>If you have any questions, prayer requests, or would like more information about our services, please reach out to us. We would love to hear from you!</p>
-        <form action="send_email.php" method="POST" id="contact-form">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="857e96d1-5db0-4d9f-a51f-acb11b075e91">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
     
@@ -46,19 +48,20 @@
     
             <button type="submit">Send</button>
         </form>
-    
-        <!-- Div to display the success or error message -->
-        <div id="form-message" style="display: none;"></div>
 
+        </form>
+    </div>
+       
+        <div id="form-message" style="display: none;"></div>
         <h2>Church Address</h2>
         
-        <p>123 Church St, City, State, ZIP Code</p>
+        <p>345-00900 Kiambu</p>
 
         <h2>Phone Number</h2>
-        <p>(123) 456-7890</p>
+        <p>0777-992-666</p>
 
         <h2>Email</h2>
-        <p>info@cogmers.org</p>
+        <p>sngugi175@gmail.com</p>
     </section>
 
     <footer>
