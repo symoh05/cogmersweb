@@ -114,12 +114,18 @@ form input, form textarea {
 }
 
 form button {
-    background-color: #4CAF50;
+    background-color: orange;
     color: white;
     padding: 10px;
     border: none;
     border-radius: 5px;
 }
+
+form button:hover {
+    background-color: purple;
+
+}
+
 
 /* Basic Reset */
 * {
@@ -383,21 +389,8 @@ h4 {
     border-radius: 10px;
 }
 
-#form-message {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#form-message.success {
-    color: green;
-}
-
-#form-message.error {
-    color: red;
-}
-
 .gr3-img:hover {
     background: black;
     z-index: 2;
 }
+
