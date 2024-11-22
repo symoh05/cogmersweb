@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Church Gallery</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General body and layout styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+            background-image: url('img/w1 (7).jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Container for the entire page */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+            background-color: none;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Image/Video item container */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Modal for fullscreen effect */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img,
+        .modal video {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        /* Responsive design for smaller screens (e.g., mobile) */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive design for very small screens (e.g., portrait phone) */
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: none;
+            color: rgb(153, 95, 95);
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+    color: #ff9800;
+    font-size: 35px;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+        .hero h1 {
+            font-size: 2.5em;
+            font-style: italic;
+            font-weight: 100;
+            font-size: 50px;
+            color: #333;
+            text-align: left;
+            align-items: left;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .hero span {
+            color: #ff9800;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .cta-button {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Gallery Image Hover Effects */
+        .gallery-item:hover {
+            z-index: 2;
+            transform: scale(1.01);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            filter: brightness(80%);
+        }
+
+        /* Off-Screen Menu Styles */
+  .off-screen-menu {
+      background-color: rgb(71, 6, 71);
+      background-image: url;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: rgb(248, 245, 245);
+      height: 100vh;
+      width: 250px; /* Menu width */
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      right: -250px;  /* Initially off-screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5rem;
+      transition: right 0.3s ease; /* Smooth slide-in effect */
+      
+  }
+  
+  /* When the menu is active (slid in) */
+  .off-screen-menu.active {
+      right: 0;  /* Slide the menu into view */
+  }
+  
+  .off-screen-menu ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  .off-screen-menu li {
+      margin: 20px 0;
+      display: block;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ccc;
+  }
+  
+  .off-screen-menu a {
+      color: rgb(8, 8, 8);
+      text-decoration: none;
+      font-size: 1.5rem;
+  }
+  
+  /* Hamburger Menu Styles */
+  .ham-menu {
+      height: 50px;
+      width: 50px;
+      margin-left: auto;
+      position: relative;
+      cursor: pointer;
+      z-index: 1000;  /* Ensures it stays on top */
+  }
+  
+  .ham-menu span {
+      height: 5px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 25px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .ham-menu span:nth-child(1) {
+      top: 25%;
+  }
+  
+  .ham-menu span:nth-child(2) {
+      top: 50%;
+  }
+  
+  .ham-menu span:nth-child(3) {
+      top: 75%;
+  }
+  
+  /* When the hamburger menu is active */
+  .ham-menu.active span:nth-child(1) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);  /* Rotate the top bar */
+  }
+  
+  .ham-menu.active span:nth-child(2) {
+      opacity: 0;  /* Hide the middle bar */
+  }
+  
+  .ham-menu.active span:nth-child(3) {
+      top: 50%;
+      transform: translate(-50%, 50%) rotate(-45deg);  /* Rotate the bottom bar */
+  }
+  
+  /* Make sure the header/nav is positioned correctly */
+  nav {
+      padding: 1rem;
+      background-color: #444;
+      position: relative;
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <!-- Hamburger Menu -->
+                <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+        
+                <!-- Off-Screen Menu (Initially hidden) -->
+                <div class="off-screen-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="groups.html">Groups</a></li>
+                        <li><a href="churchgallery.html">Church Gallery</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Welcome to the Church Gallery</h1>
+            <span>See the beauty captured through the lens.</span>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <!-- Image 1 -->
+            <div class="gallery-item">
+                <img src="img/image1 (1).jpg" alt="Image 1">
+            </div>
+
+            <!-- Image 2 -->
+            <div class="gallery-item">
+                <img src="img/image1 (10).jpg" alt="Image 2">
+            </div>
+
+            <!-- Image 3 -->
+            <div class="gallery-item">
+                <img src="img/image1 (11).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (12).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (13).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (14).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (15).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (16).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (17).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (18).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (19).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (20).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (21).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (22).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (23).jpg" alt="Image 3">
+            </div>
+
+            <div class="gallery-item">
+                <img src="img/image1 (24).jpg" alt="Image 3">
+            </div>
+
+            <!-- Video 1 -->
+            <div class="gallery-item">
+                <video controls>
+                    <source src="vid/vid.mp4.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+
+            <!-- Add more images/videos as needed -->
+        </section>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                   
+                <div class="footer-section">
+                    <h3>CHURCH OF GOD SEVENTH DAY</h3>
+                    <p>We are Messianic Synagogue, believing Yahshuah is the Messiah (John 4:22-26).</p>
+                    <ul class="contact-info">
+                        <li><span class="icon">📞</span> +254-700-000-000</li>
+                        <li><span class="icon">📧</span> info@kiambucogmers.or.ke</li>
+                        <li><span class="icon">🌐</span> COGMERs Messianic Congregation</li>
+                        <li><span class="icon">📍</span> Kiambu Kenya.</li>
+                    </ul>
+                </div>
+            </div>
+            <footer>
+            <div class="footer-bottom">
+                <p>Copyright © 2024 www.cogmerskiambu.org. All rights reserved.</p>
+                <p>Developed & maintained by <a href="#"> Kiambu COG Media Team</a>.</p>
+            </div>
+            </footer>
+    </div>
+
+    <script>
+        // Get all the gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Create modal element
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        document.body.appendChild(modal);
+
+        // Create a close button for the modal
+        const closeButton = document.createElement('span');
+        closeButton.classList.add('close');
+        closeButton.textContent = '×';
+        modal.appendChild(closeButton);
+
+        // When any gallery item is clicked, open it in the modal
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                let mediaClone;
+                
+                // If it's an image
+                if (item.querySelector('img')) {
+                    mediaClone = item.querySelector('img').cloneNode();
+                }
+                // If it's a video
+                else if (item.querySelector('video')) {
+                    mediaClone = item.querySelector('video').cloneNode(true);
+                }
+
+                // Clear existing modal content and append new media
+                modal.innerHTML = '';  // Reset the modal content
+                modal.appendChild(closeButton);  // Re-add the close button
+                modal.appendChild(mediaClone);  // Add the clicked media
+                modal.style.display = 'flex';  // Show the modal
+            });
+        });
+
+        // When the close button is clicked, hide the modal
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close the modal if the user clicks outside the media content
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        // Select the hamburger menu and off-screen menu
+ const hamMenu = document.querySelector('.ham-menu');
+ const offScreenMenu = document.querySelector('.off-screen-menu');
+
+ // Toggle the menu when clicking on the hamburger menu
+ hamMenu.addEventListener('click', (event) => {
+     event.stopPropagation(); // Prevent the event from bubbling up
+     hamMenu.classList.toggle('active');
+     offScreenMenu.classList.toggle('active');
+ });
+
+ // Close the menu if you click outside the menu
+ document.addEventListener('click', (event) => {
+     if (!hamMenu.contains(event.target) && !offScreenMenu.contains(event.target)) {
+         hamMenu.classList.remove('active');
+         offScreenMenu.classList.remove('active');
+     }
+ });
+    </script>
+</body>
+</html>
