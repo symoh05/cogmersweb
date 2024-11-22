@@ -55,7 +55,7 @@
         /* Gallery Section */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
@@ -106,17 +106,17 @@
             cursor: pointer;
         }
 
-        /* Responsive design for tablets and smaller devices */
+        /* Responsive design for smaller screens (e.g., mobile) */
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for smartphones */
+                grid-template-columns: repeat(3, 2fr);
             }
         }
 
         /* Responsive design for very small screens (e.g., portrait phone) */
         @media (max-width: 480px) {
             .gallery {
-                grid-template-columns: 1fr; /* 1 column for very small screens */
+                grid-template-columns: 3fr;
             }
         }
 
@@ -137,14 +137,12 @@
             text-align: center;
             padding: 50px;
         }
-
         h1 {
-            color: #ff9800;
-            font-size: 35px;
-            width: 100%;
-            font-family: 'Times New Roman', Times, serif;
-        }
-
+    color: #ff9800;
+    font-size: 35px;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
         .hero h1 {
             font-size: 2.5em;
             font-style: italic;
@@ -187,111 +185,106 @@
         }
 
         /* Off-Screen Menu Styles */
-        .off-screen-menu {
-            background-color: rgb(71, 6, 71);
-            background-image: url;
-            background-size: cover;
-            background-repeat: no-repeat;
-            color: rgb(248, 245, 245);
-            height: 100vh;
-            width: 250px; /* Menu width */
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            right: -250px;  /* Initially off-screen */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 1.5rem;
-            transition: right 0.3s ease; /* Smooth slide-in effect */
-        }
-
-        /* When the menu is active (slid in) */
-        .off-screen-menu.active {
-            right: 0;  /* Slide the menu into view */
-        }
-
-        .off-screen-menu ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .off-screen-menu li {
-            margin: 20px 0;
-            display: block;
-            padding: 10px 15px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .off-screen-menu a {
-            color: rgb(8, 8, 8);
-            text-decoration: none;
-            font-size: 1.5rem;
-        }
-
-        /* Hamburger Menu Styles */
-        .ham-menu {
-            height: 50px;
-            width: 50px;
-            margin-left: auto;
-            position: relative;
-            cursor: pointer;
-            z-index: 1000;  /* Ensures it stays on top */
-        }
-
-        .ham-menu span {
-            height: 5px;
-            width: 100%;
-            background-color: #fff;
-            border-radius: 25px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        .ham-menu span:nth-child(1) {
-            top: 25%;
-        }
-
-        .ham-menu span:nth-child(2) {
-            top: 50%;
-        }
-
-        .ham-menu span:nth-child(3) {
-            top: 75%;
-        }
-
-        /* When the hamburger menu is active */
-        .ham-menu.active span:nth-child(1) {
-            top: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);  /* Rotate the top bar */
-        }
-
-        .ham-menu.active span:nth-child(2) {
-            opacity: 0;  /* Hide the middle bar */
-        }
-
-        .ham-menu.active span:nth-child(3) {
-            top: 50%;
-            transform: translate(-50%, -50%) rotate(-45deg);  /* Rotate the bottom bar */
-        }
-
-        /* Active Menu Visibility */
-        .menu.active {
-            visibility: visible;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .menu {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
+  .off-screen-menu {
+      background-color: rgb(71, 6, 71);
+      background-image: url;
+      background-size: cover;
+      background-repeat: no-repeat;
+      color: rgb(248, 245, 245);
+      height: 100vh;
+      width: 250px; /* Menu width */
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      right: -250px;  /* Initially off-screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 1.5rem;
+      transition: right 0.3s ease; /* Smooth slide-in effect */
+      
+  }
+  
+  /* When the menu is active (slid in) */
+  .off-screen-menu.active {
+      right: 0;  /* Slide the menu into view */
+  }
+  
+  .off-screen-menu ul {
+      list-style: none;
+      padding: 0;
+  }
+  
+  .off-screen-menu li {
+      margin: 20px 0;
+      display: block;
+      padding: 10px 15px;
+      border-bottom: 1px solid #ccc;
+  }
+  
+  .off-screen-menu a {
+      color: rgb(8, 8, 8);
+      text-decoration: none;
+      font-size: 1.5rem;
+  }
+  
+  /* Hamburger Menu Styles */
+  .ham-menu {
+      height: 50px;
+      width: 50px;
+      margin-left: auto;
+      position: relative;
+      cursor: pointer;
+      z-index: 1000;  /* Ensures it stays on top */
+  }
+  
+  .ham-menu span {
+      height: 5px;
+      width: 100%;
+      background-color: #fff;
+      border-radius: 25px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .ham-menu span:nth-child(1) {
+      top: 25%;
+  }
+  
+  .ham-menu span:nth-child(2) {
+      top: 50%;
+  }
+  
+  .ham-menu span:nth-child(3) {
+      top: 75%;
+  }
+  
+  /* When the hamburger menu is active */
+  .ham-menu.active span:nth-child(1) {
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);  /* Rotate the top bar */
+  }
+  
+  .ham-menu.active span:nth-child(2) {
+      opacity: 0;  /* Hide the middle bar */
+  }
+  
+  .ham-menu.active span:nth-child(3) {
+      top: 50%;
+      transform: translate(-50%, 50%) rotate(-45deg);  /* Rotate the bottom bar */
+  }
+  
+  /* Make sure the header/nav is positioned correctly */
+  nav {
+      padding: 1rem;
+      background-color: #444;
+      position: relative;
+  }
     </style>
 </head>
 <body>
@@ -421,12 +414,12 @@
                     </ul>
                 </div>
             </div>
-            </footer>
+            <footer>
             <div class="footer-bottom">
                 <p>Copyright © 2024 www.cogmerskiambu.org. All rights reserved.</p>
                 <p>Developed & maintained by <a href="#"> Kiambu COG Media Team</a>.</p>
             </div>
-        </footer>
+            </footer>
     </div>
 
     <script>
@@ -477,25 +470,24 @@
                 modal.style.display = 'none';
             }
         });
-
         // Select the hamburger menu and off-screen menu
-        const hamMenu = document.querySelector('.ham-menu');
-        const offScreenMenu = document.querySelector('.off-screen-menu');
+ const hamMenu = document.querySelector('.ham-menu');
+ const offScreenMenu = document.querySelector('.off-screen-menu');
 
-        // Toggle the menu when clicking on the hamburger menu
-        hamMenu.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the event from bubbling up
-            hamMenu.classList.toggle('active');
-            offScreenMenu.classList.toggle('active');
-        });
+ // Toggle the menu when clicking on the hamburger menu
+ hamMenu.addEventListener('click', (event) => {
+     event.stopPropagation(); // Prevent the event from bubbling up
+     hamMenu.classList.toggle('active');
+     offScreenMenu.classList.toggle('active');
+ });
 
-        // Close the menu if you click outside the menu
-        document.addEventListener('click', (event) => {
-            if (!hamMenu.contains(event.target) && !offScreenMenu.contains(event.target)) {
-                hamMenu.classList.remove('active');
-                offScreenMenu.classList.remove('active');
-            }
-        });
+ // Close the menu if you click outside the menu
+ document.addEventListener('click', (event) => {
+     if (!hamMenu.contains(event.target) && !offScreenMenu.contains(event.target)) {
+         hamMenu.classList.remove('active');
+         offScreenMenu.classList.remove('active');
+     }
+ });
     </script>
 </body>
 </html>
