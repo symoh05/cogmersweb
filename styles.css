@@ -420,7 +420,7 @@ h4 {
     z-index: 2;
 }
 
-calendar-container {
+.calendar-container {
   text-align: center;
   background: white;
   border: 2px solid #ccc;
