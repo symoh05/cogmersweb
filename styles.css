@@ -420,3 +420,97 @@ h4 {
     z-index: 2;
 }
 
+calendar-container {
+  text-align: center;
+  background: white;
+  border: 2px solid #ccc;
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+h1.current-date {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #f28c28;
+}
+
+.calendar {
+  margin: 20px 0;
+}
+
+.month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f28c28;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.month {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.month-nav button {
+  background: white;
+  color: #f28c28;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.month-nav button:hover {
+  background: #ffb84d;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.calendar-table td,
+.calendar-table th {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.calendar-table th {
+  background-color: #f28c28;
+  color: white;
+}
+
+.calendar-table td.current {
+  background-color: #ffb84d;
+  font-weight: bold;
+  color: black;
+}
+
+.feasts h2 {
+  color: #f28c28;
+}
+
+.feasts ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.feasts li {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.time {
+  font-size: 18px;
+  margin-top: 20px;
+  color: #f28c28;
+}
