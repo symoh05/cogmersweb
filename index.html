@@ -188,6 +188,8 @@ function showNextSlide() {
 setInterval(showNextSlide, 3000);
     let currentDate = new Date(); // Track the currently displayed date
 
+let currentDate = new Date(); // Track the currently displayed date
+
 // Biblical Feasts and New Moon data
 const feastsData = {
   1: ["Jan 25 - New Moon Observance"],
@@ -221,6 +223,7 @@ const feastsData = {
 function updateCalendar() {
   const currentMonth = currentDate.getMonth() + 1; // Adjusted for zero-indexed JS months
   const currentYear = currentDate.getFullYear();
+  const today = new Date(); // Get today's date
 
   // Update header with current month name
   const monthNames = [
@@ -252,6 +255,17 @@ function updateCalendar() {
   for (let day = 1; day <= daysInMonth; day++) {
     const cell = document.createElement("td");
     cell.innerText = day;
+
+    // Highlight today's date if it matches
+    if (
+      day === today.getDate() &&
+      today.getMonth() + 1 === currentMonth &&
+      today.getFullYear() === currentYear
+    ) {
+      cell.style.backgroundColor = "yellow";
+      cell.style.fontWeight = "bold";
+    }
+
     row.appendChild(cell);
 
     if ((day + firstDay) % 7 === 0) {
@@ -292,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("time").innerText = new Date().toLocaleTimeString();
   }, 1000);
 });
+
 
 
 </script>
